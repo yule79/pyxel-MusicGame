@@ -6,7 +6,7 @@ Point = namedtuple("Point", ["x", "y"])  # Convenience class for coordinates
 COL_BACKGROUND = 3
 COL_BODY = 11
 COL_HEAD = 7
-COL_DEATH = 8
+COL_DEATH = 5
 COL_APPLE = 8
 
 TEXT_DEATH = ["GAME OVER", "(Q)UIT", "(R)ESTART"]
@@ -47,6 +47,7 @@ D_point_J=0
 D_point_K=0
 point_2=0
 combo=0
+combo_2=0
 ys = [y,y_2,yy,yy_2,yyy,yyy_2,yyyy,yyyy_2]
 
 class App:
@@ -62,10 +63,12 @@ class App:
         self.death = False
         pyxel.playm(0, loop=False)
     def draw_score(self):
-        global point_2
+        global point_2,combo_2
         point_2 = f"{score:05}"
         pyxel.rect(0, 0, WIDTH, HEIGHT_SCORE, COL_SCORE_BACKGROUND)
         pyxel.text(1, 1, point_2, COL_SCORE)
+        combo_2 = f"    S      D      J      K"
+        pyxel.text(1, 110, combo_2, COL_DEATH)
     def update(self):
         global y,y_2,y_3,yy,yy_2,yy_3,yyy,yyy_2,yyy_3,yyyy,yyyy_2,yyyy_3,timer,ys
         y+=3
